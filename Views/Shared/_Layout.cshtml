@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - КТ-20</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <p class="site-title">КТ-20 - Аутентификация и авторизация на основе токенов</p>
+            <nav>
+                <a asp-controller="Home" asp-action="Index">Главная</a>
+                <a asp-controller="Chat" asp-action="Index">Чат</a>
+                <a id="register-link" asp-controller="Account" asp-action="Register">Регистрация</a>
+                <a id="login-link" asp-controller="Account" asp-action="Login">Вход</a>
+                <button id="logout-button" type="button" hidden>Выйти</button>
+            </nav>
+            <p id="account-name" class="account-name" hidden></p>
+        </div>
+    </header>
+    <main class="container content">
+        @RenderBody()
+    </main>
+    <footer class="container">ADO.NET - ASP.NET Core MVC - SignalR - КТ-20</footer>
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

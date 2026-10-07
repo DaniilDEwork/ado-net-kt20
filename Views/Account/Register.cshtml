@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Регистрация";
+}
+<h1>Регистрация</h1>
+<form id="auth-form" class="login-form" data-endpoint="/api/auth/register" data-return-url="/Chat" novalidate>
+    <div id="auth-errors" class="error" role="alert" hidden></div>
+    <label for="UserName">Имя пользователя</label>
+    <input id="UserName" name="UserName" autocomplete="username" maxlength="30">
+    <p class="hint">От 3 до 30 символов, буквы, цифры и подчёркивание</p>
+    <label for="Password">Пароль</label>
+    <input id="Password" name="Password" type="password" autocomplete="new-password" maxlength="100">
+    <p class="hint">От 8 символов, с буквами и цифрами</p>
+    <label for="ConfirmPassword">Подтверждение пароля</label>
+    <input id="ConfirmPassword" name="ConfirmPassword" type="password" autocomplete="new-password" maxlength="100">
+    <button id="auth-submit" type="submit">Зарегистрироваться</button>
+</form>
+<p>Уже есть аккаунт? <a asp-controller="Account" asp-action="Login">Войти</a></p>
+@section Scripts {
+    <script src="~/js/account.js" asp-append-version="true"></script>
+}

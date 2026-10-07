@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Главная";
+}
+<h1>Защищённый чат</h1>
+<p>Для доступа к чату нужно зарегистрироваться или войти в аккаунт</p>
+<p>Сообщения приходят без обновления страницы, подключение защищено JWT токеном</p>
+<p id="signed-out-message" class="success" role="status" hidden>Вы вышли из аккаунта</p>
+<div class="actions">
+    <a class="button" asp-controller="Chat" asp-action="Index">Открыть чат</a>
+</div>
+@section Scripts {
+    <script>
+        document.getElementById("signed-out-message").hidden = new URLSearchParams(location.search).get("signedOut") !== "1";
+    </script>
+}

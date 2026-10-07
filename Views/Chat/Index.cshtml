@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Чат";
+}
+<h1>Общий чат</h1>
+<p id="chat-loading" role="status">Проверка доступа к чату</p>
+<div id="chat-content" hidden>
+    <p id="sign-in-message" class="success" role="status" hidden></p>
+    <p>Вы общаетесь под именем <strong id="chat-user-name"></strong></p>
+    <details class="token-info">
+        <summary>JWT токен</summary>
+        <label for="jwt-token">Токен доступа</label>
+        <textarea id="jwt-token" readonly rows="3"></textarea>
+        <p>Действует до <time id="token-expiry"></time></p>
+    </details>
+    <p id="connection-status" class="chat-status" role="status">Подключение к чату</p>
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Сообщения чата">
+        <p id="chat-empty" class="chat-empty">Сообщений пока нет</p>
+    </div>
+    <form id="message-form" class="chat-form">
+        <label for="message">Сообщение</label>
+        <textarea id="message" maxlength="500" placeholder="Введите сообщение" rows="3"></textarea>
+        <div class="actions">
+            <button id="send-button" type="submit" disabled>Отправить</button>
+            <button id="reconnect-button" type="button" hidden>Подключиться снова</button>
+        </div>
+        <p id="message-error" class="error" role="alert" hidden></p>
+    </form>
+</div>
+@section Scripts {
+    <script src="~/lib/signalr/signalr.min.js" asp-append-version="true"></script>
+    <script src="~/js/chat.js" asp-append-version="true"></script>
+}

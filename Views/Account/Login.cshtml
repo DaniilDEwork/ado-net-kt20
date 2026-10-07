@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Вход";
+}
+<h1>Вход</h1>
+@if (ViewData["Expired"] is true)
+{
+    <p class="error">Срок действия токена истёк, войдите снова</p>
+}
+else if (ViewData["ChatRequired"] is true)
+{
+    <p class="hint">Чат доступен только после входа с JWT токеном</p>
+}
+<form id="auth-form" class="login-form" data-endpoint="/api/auth/login" data-return-url="@ViewData["ReturnUrl"]" novalidate>
+    <div id="auth-errors" class="error" role="alert" hidden></div>
+    <label for="UserName">Имя пользователя</label>
+    <input id="UserName" name="UserName" autocomplete="username" maxlength="30">
+    <label for="Password">Пароль</label>
+    <input id="Password" name="Password" type="password" autocomplete="current-password" maxlength="100">
+    <button id="auth-submit" type="submit">Войти</button>
+</form>
+<p>Нет аккаунта? <a asp-controller="Account" asp-action="Register">Зарегистрироваться</a></p>
+@section Scripts {
+    <script src="~/js/account.js" asp-append-version="true"></script>
+}
